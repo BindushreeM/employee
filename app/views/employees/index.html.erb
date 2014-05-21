@@ -1,0 +1,58 @@
+<div class="img">
+
+  <% if !@contacts.nil?%>
+    <% @contacts.each do |c|%>
+    <ul>
+      <li><%= c[:name]%> : <%= c[:email]%></li>
+    </ul>
+    <%end%>
+  <%end%>
+
+  <div class="invite"><%= image_tag("l.jpg",:style=>"width:20px")%> 
+    <%= link_to "Invite your google contacts", "/employees/gmail",:id=>"invite_friends" %>
+  </div>  
+
+
+  <h1>Listing employees</h1>
+  <%= image_tag("3a.jpg",:class=>"img-circle")%>
+  <br><br>
+
+  <div class="row">
+    <% @employees.each do |employee| %>
+    <div class="col-sm-4">
+      <div class="well well-sm" >
+        <h4>Name:<%= employee.name %></h4>
+        <h4>Id:<%= employee.id_number %></h4>
+        <h4>Salary:<%= employee.salary %></h4>
+        <h4>Designation:<%= employee.designation %></h4>
+        <%= link_to 'Show', employee_path(employee), :class => "btn btn-sm btn-default"  %>
+        <%= link_to 'Edit', edit_employee_path(employee), :class => "btn btn-sm btn-default"  %>
+        <%= link_to 'Destroy', employee_path(employee),
+        method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-sm btn-default"  %>
+      </div>
+    </div>
+    <% end %>
+  </div><br>
+
+  <%= link_to 'Create new employee', new_employee_path ,:class => "btn btn-default btn-lg" %><br><br>
+  
+  <div class="pagi">
+    <%= paginate @employees %>
+  </div>
+
+</div>
+<br>
+
+<!-- 
+// // $(function() {
+// //   $("a#invite_friends").click(function() {
+// //        alert("hi");
+// // //     gmail.init ({
+// // //       key: "2206940545-vvu4rkbfstgpnkeo41asmoiivq8me8u1.apps.googleusercontent.com",
+// // //       secret:"ry49-nqn4vJpOMIxDZl3zmNf",
+// // //       expose: true,
+// // //       scope: "http://localhost:3000/employees/gmail/contact_callback" 
+// // //     });
+// // //   });
+// // });
+ -->

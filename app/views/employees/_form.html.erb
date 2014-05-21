@@ -1,0 +1,39 @@
+<%= image_tag("3b.jpg",:class=>"img-rounded" )  %>
+
+<%= form_for @employee do |f| %>
+<% if @employee.errors.any? %>
+<div id="error_explanation">
+<h4>
+<%= pluralize(@employee.errors.count, "error") %> prohibited
+this employee from being saved:</h4>
+<ul>
+  <% @employee.errors.full_messages.each do |msg| %>
+  <p><%= msg %></p>
+<% end %>
+</ul>
+</div>
+<% end %>
+<p>
+<%= f.label :Name %><br>
+<%= f.text_field :name %>
+</p>
+
+<p>
+<%= f.label :id %><br>
+<%= f.text_field :id_number %>
+</p>
+<p>
+<%= f.label :Salary %><br>
+<%= f.text_field :salary %>
+</p>
+<p>
+<%= f.label :Designation %><br>
+<%= f.text_field :designation %>
+</p>
+
+
+<p>
+<%= f.submit %>
+</p>
+<% end %>
+

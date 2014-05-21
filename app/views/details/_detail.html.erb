@@ -1,0 +1,16 @@
+
+<p class="p1">
+  <strong>Project Name:</strong>
+  <%= detail.project_name %>
+</p>
+ 
+<p class="p1">
+  <strong>Discription:</strong>
+  <%= detail.discription %>
+</p>
+
+<p>
+  <%= link_to 'Destroy project', [detail.employee, detail],
+               method: :delete,
+               data: { confirm: 'Are you sure?' },:class => "btn btn-sm btn-default" %>
+</p>

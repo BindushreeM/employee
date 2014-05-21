@@ -1,0 +1,25 @@
+ <div class="img" style="padding:100px">
+  <table class="table table-hover ">
+  <% Comment.all.each do |acomment| %>
+  <tr>
+   <%= acomment.comment %></br>
+   <% acomment.post.each do |fi| %>
+   <%= fi.post %><br/>
+
+   <% end %>
+   <%= form_for :comment do |f|%>
+   <%= f.text_field :comments %>
+   <%= f.submit "Add comment" %></br>
+
+   <% end %>
+ </td>
+</tr>
+<% end %>
+
+</table>
+
+<%= form_for :post do |f|%>
+<%= f.text_field :posts %>
+<%= f.submit "Add post" %></br>
+<% end %>
+</div>

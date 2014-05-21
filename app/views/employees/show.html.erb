@@ -1,0 +1,18 @@
+<div class="img">
+
+	<h2>Employee Details</h2>
+	<%= image_tag("4b.jpg",:class=>"img-thumbnail" )  %>
+	<h4><strong>Hi,Welcome to the Qwinix employee details.</strong></h4>
+	<p class="p1">We will help our clients grow value as we grow our experience, expertise and thought leadership role. Relationship-building and adherence to a strict code of professional principles are paramount in our client relationships. From concept to completion, we will explore opportunities, reduce operating costs, increase profitability, and enhance agility on behalf of our clients.</p>
+	<p class="p1">Current employee name is <strong>"<%= @employee.name %>"</strong> and id <strong>"<%= @employee.id_number%>"</strong>. 
+		employee hire the salary per month <strong>"<%= @employee.salary%>"</strong> and worked as a <strong>"<%= @employee.designation%>"</strong>.
+	</p>
+
+	<%= render @employee.details %>
+
+	<h3>Assign a new Project:</h3>
+	<%= render "details/form" %>
+
+	<%= link_to 'Back', employees_path,:class => "btn btn-sm btn-default" %>
+	| <%= link_to 'Edit', edit_employee_path(@employee),:class => "btn btn-sm btn-default" %>
+</div>

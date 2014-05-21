@@ -1,0 +1,32 @@
+
+<div class="field" >
+	<div class="modal-header">
+		<button class="close" aria-hidden="true" data-dismiss="modal" type="button">×</button>
+		<%= image_tag("l.jpg",:style=>"width:20px")%> 
+		
+		<%= link_to "Sign in with Gmail", "/auth/google_oauth2", id: "sign_in" %>
+		<br>
+        <h1>Log in</h1>
+	</div>
+
+	<%=  form_for :user, url: log_in_user_path, :authenticity_token => true do |f| %> 
+	<div class="modal-body">
+		
+		<p>
+			<%= label_tag :email %><br />
+			<%= text_field_tag :email, params[:email] %>
+		</p>
+		<p>
+			<%= label_tag :password %><br />
+			<%= password_field_tag :password %>
+		</p>
+
+		<div class="modal-footer">
+			<%= submit_tag "Sign In"%><br><br>
+		</div>
+		
+		<% end %>
+		<br>
+	</div>
+
+</div>
