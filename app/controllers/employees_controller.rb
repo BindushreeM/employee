@@ -9,13 +9,29 @@ class EmployeesController < ApplicationController
 	end
 
 	def contact_callback
+		p "coming"
 		@contacts = request.env['omnicontacts.contacts']
 		@user = request.env['omnicontacts.user']
-           puts "List of contacts of #{user[:name]} obtained from #params[:importer]}:"
+		p @user
+		p @contacts
+		    puts "List of contacts of #{user[:name]} obtained from #params[:importer]}:"
         @contacts.each do|contact|
            puts "Contact found: name => #{contact[:name]}, email => #{contact[:email]}"
         end
     end
+
+#  def contact_callback
+#   @contacts = request['omnicontacts.contacts']
+#   p @contacts
+#   @contacts.each do |contact|
+#   contact1 = current_user.contacts.new
+#   contact1.name = contact[:name]
+#   contact1.email = contact[:email]
+#   contact1.group = "Others"
+#   contact1.save(:validate => false)
+# end
+#   redirect_to "/contact"
+# end
 
 	def index
 	    @employees = Employee.search(params[:search]).order("name").page(params[:page]).per( 9 )
@@ -41,6 +57,7 @@ class EmployeesController < ApplicationController
 	end
    
     def show
+
 		@employee=Employee.find(params[:id])
     end
 
@@ -72,10 +89,18 @@ class EmployeesController < ApplicationController
         redirect_to google_root_url
     end
 
+    def failure
+    	# render :text => "You are not authorized"
+		# contact_callback
+    	respond_to do |format|
+           format.html
+        end
+    end
+
     private
 	def employee_params
 		params.require(:employee).permit(:name, :id_number, :salary, :designation)
 	end
 
 end
-# index page
+

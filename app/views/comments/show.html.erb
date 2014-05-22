@@ -5,24 +5,24 @@
  
 <p>
   <strong>Post:</strong>
-  <%= @comment.integer %>
+  <%= @comment.post_id %>
 </p>
 <h2>Comments</h2>
 
-<% @comment.comments.each do |comment| %>
+<% @comment.posts.each do |comment| %>
   <p>
     <strong>Commenter:</strong>
-    <%= comment.commenter %>
+    <%= comment.poster %>
   </p>
  
   <p>
     <strong>post:</strong>
-    <%= comment.post_id%>
+    <%= comment.comments_id%>
   </p>
 <% end %>
  
 <h2>Add a comment:</h2>
-<%= form_for([@comment, @comment.comments.build]) do |f| %>
+<%= form_for([@comment, @comment.posts.build]) do |f| %>
   <p>
     <%= f.label :comment %><br>
     <%= f.text_field :commenter %>
